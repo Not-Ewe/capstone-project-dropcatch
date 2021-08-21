@@ -1,0 +1,51 @@
+h1 {
+    font-family: 'Notable', sans-serif;
+    font-size: 60px;
+    text-shadow: 2px 2px 4px darkgray;
+    text-decoration: underline;
+    border-radius: 60px;
+    width: 725px;
+    text-align: center;
+    margin-left: 320px;
+    box-shadow: inset 0 0 0 1000px rgba(253, 235, 73, 0.2);
+    border: 50px dark grey;
+
+}
+
+body {
+    background-image: url("/Images/pinball-background4.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+form {
+    width: 400px;
+    background: light grey;
+    background-opacity: 60%;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+
+    padding: 50px;
+    border: 50px darkgray;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-label {
+    color: white;
+}
+
+.email-privacy {
+    color:white;
+}
+
+.sign-in-button {
+    text-align:center;
+    margin: 10px;
+}
+
+.create-acct-button {
+    text-align:center;
+    margin: 10px;
+}
+
