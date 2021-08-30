@@ -4,6 +4,8 @@ package org.launchcode.DropCatch.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.Objects;
@@ -15,23 +17,22 @@ public class User {
     @GeneratedValue
     private int id;
 
-    @NotNull
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid Email. Try again.")
     private String userEmail;
 
-    @NotNull
-    private String pwHash;
+    @NotBlank
+    private String userPassword;
 
-    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     // Constructors
-
 
     public User(int id, String userEmail, String userPassword) {
         this.id = id;
         this.userEmail = userEmail;
-        this.pwHash = encoder.encode(userPassword);
+        this.userPassword = userPassword;
     }
-
+    // Will be needed for abstract entity
     public User() {};
 
 
@@ -48,6 +49,9 @@ public class User {
         return userEmail;
     }
 
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
+
+    public void setPwHash(String pwHash) { this.userPassword = userPassword; }
 
     // toString
     @Override
@@ -69,9 +73,8 @@ public class User {
         return Objects.hash(id);
     }
 
-    public boolean isMatchingPassword(String password) {
-        return encoder.matches(password, pwHash);
-    }
+
 }
+
 
 
