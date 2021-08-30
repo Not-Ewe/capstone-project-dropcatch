@@ -12,7 +12,7 @@ public class PinballMachines {
         this.pinballMachine = pinballMachine;
         this.yearReleased = yearReleased;
     }
-
+    // For abstract entity
     public PinballMachines() {};
 
     //Getters and Setters

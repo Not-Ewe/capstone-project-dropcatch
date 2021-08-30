@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.Objects;
 
@@ -21,16 +23,22 @@ public class User {
     @Email(message = "Invalid Email. Try again.")
     private String userEmail;
 
-    @NotBlank
+    @NotBlank(message = "Password is required")
+    @Size(min=6)
     private String userPassword;
+
+    @NotBlank(message= "Please re-type password")
+    @Size(min=6)
+    private String verifyPassword;
 
 
     // Constructors
 
-    public User(int id, String userEmail, String userPassword) {
+    public User(int id, String userEmail, String userPassword, String verifyPassword) {
         this.id = id;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
+        this.verifyPassword = verifyPassword;
     }
     // Will be needed for abstract entity
     public User() {};
@@ -51,7 +59,13 @@ public class User {
 
     public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
 
-    public void setPwHash(String pwHash) { this.userPassword = userPassword; }
+    public String getUserPassword() { return userPassword; }
+
+    public void setUserPassword(String userPassword) { this.userPassword = userPassword; }
+
+    public String getVerifyPassword() { return verifyPassword; }
+
+    public void setVerifyPassword(String verifyPassword) { this.verifyPassword = verifyPassword; }
 
     // toString
     @Override
