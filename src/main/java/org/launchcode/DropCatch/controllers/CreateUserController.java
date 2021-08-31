@@ -17,32 +17,14 @@ public class CreateUserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("index")
+    @GetMapping("add")
 //    @ResponseBody
     public String createUser(Model model) {
         model.addAttribute(new User());
-        return "user/index";
+        return "user/add";
     }
 
-//    @RequestMapping(value = "index", method = {RequestMethod.GET})
-//    public String testMethod(@ModelAttribute User user, Errors errors, Model model) {
-//        if (errors.hasErrors()) {
-//            return "index";
-//        }
-//        return "/user-home";
-//    }
-
-
-//    public String createUser() {
-//    }
-//    public User createUser(@RequestParam("exampleInputEmail1") String email, @RequestParam(
-//            "exampleInputPassword1") String password) {
-//
-//        User user = new User();
-//        user.setUserEmail(user.getUserEmail());
-//        return user;
-
-    @PostMapping("index")
+    @PostMapping("add")
     public String processAddEmployerForm(Model model, @ModelAttribute @Valid User user,
                                          Errors errors ) {
 
@@ -50,12 +32,12 @@ public class CreateUserController {
             errors.hasErrors();
         }
         if (errors.hasErrors()) {
-            return "user/index";
+            return "user/add";
         }
 
         userRepository.save(user);
         return "user/user-home";
     }
 
-    }
+}
 

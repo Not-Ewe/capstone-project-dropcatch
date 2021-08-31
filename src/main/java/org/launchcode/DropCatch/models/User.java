@@ -24,11 +24,11 @@ public class User {
     private String userEmail;
 
     @NotBlank(message = "Password is required")
-    @Size(min=6)
+    @Size(min=6, max=16, message = "Password must be between 6-16 characters")
     private String userPassword;
 
     @NotBlank(message= "Please re-type password")
-    @Size(min=6)
+    @Size(min=6, max=16, message = "Password must be between 6-16 characters")
     private String verifyPassword;
 
 

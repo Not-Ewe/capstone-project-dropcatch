@@ -4,12 +4,12 @@
 <head th:replace="fragments :: head">
 </head>
 
-    <body>
+<body>
     <div th:replace="fragments :: navbar-main-div"></div>
     <div th:replace="fragments :: headline"></div>
 
     <!-- Form to Create New Account into site -->
-        <form method ="post" action="/user/index" th:object="${user}">
+        <form method ="post" action="/user/add" th:object="${user}">
             <fieldset>
                 <legend>Create new account</legend>
 
@@ -54,5 +54,5 @@
 <!--                    <button type="submit" class="btn btn-primary btn-sm" >Already a member? Sign In</button>-->
 <!--                </div>-->
 
-    </body>
+</body>
 </html>

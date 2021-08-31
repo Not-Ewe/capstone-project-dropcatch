@@ -61,3 +61,11 @@ legend {
     margin: 10px;
 }
 
+.intro {
+    color: white;
+}
+
+.error {
+    color: red;
+}
+
