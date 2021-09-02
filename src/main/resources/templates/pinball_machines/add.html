@@ -8,28 +8,53 @@
     <div th:replace="fragments :: navbar-main-div"></div>
     <div th:replace="fragments :: headline"></div>
 
-    <h1>Machine Page</h1>
-
     <form>
         <fieldset>
             <legend>Add a Machine</legend>
+            </hr>
             <div class="form-group">
-                <label class="col-form-label mt-4" for="inputDefault">Game Name</label>
+                <label class="col-form-label mt-4" for="inputDefault" >Search:</label>
                 <input type="text" class="form-control" placeholder=""
                        id="pinballMachine">
             </div>
-            <div class="form-group">
-                <label class="col-form-label mt-4" for="inputDefault">Manufacturer</label>
-                <input type="text" class="form-control" placeholder=""
-                       id="manufacturer">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                    Title
+                </label>
             </div>
-            <div class="form-group">
-                <label class="col-form-label mt-4" for="inputDefault">Year Released</label>
-                <input type="text" class="form-control" placeholder="" id="inputDefault">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                    Manufacturer
+                </label>
+            </div>
+            <div class="form-check-label">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                    Year Released
+                </label>
+                <button type="submit" class="btn btn-primary btn-lg" >Search Database</button><br>
+
             </div>
         </fieldset>
     </form>
 
+    <table>
+        <tr >
+            <td>
+                <p>
+                    Machine Name:
+                </p>
+                <p>
+                    Manufacturer:
+                </p>
+                <p>
+                    Year Released:
+                </p>
+            </td>
+        </tr>
+    </table>
 </body>
 
 </html>
