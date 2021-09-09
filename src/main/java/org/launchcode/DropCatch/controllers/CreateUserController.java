@@ -7,37 +7,38 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 
+
+
 @Controller
-@RequestMapping("user/")
+@RequestMapping("user")
 public class CreateUserController {
 
     @Autowired
     private UserRepository userRepository;
 
     @GetMapping("add")
-//    @ResponseBody
     public String createUser(Model model) {
         model.addAttribute(new User());
         return "user/add";
     }
 
     @PostMapping("add")
-    public String processAddEmployerForm(Model model, @ModelAttribute @Valid User user,
+    public String processAddEmployerForm(Model model,
+                                         @RequestParam String verifyPassword,
+                                         @ModelAttribute @Valid User user,
                                          Errors errors ) {
 
-        if (!user.getUserPassword().matches(user.getVerifyPassword())) {
-            errors.hasErrors();
-        }
         if (errors.hasErrors()) {
             return "user/add";
+        } else if (!verifyPassword.equals(user.getUserPassword())) {
+            model.addAttribute("errors", "Passwords must match!!");
+            return "user/add";
+        } else {
+            userRepository.save(user);
+            return "user/user-home";
         }
 
-        userRepository.save(user);
-        return "user/user-home";
-    }
-
-}
+    }}
 
