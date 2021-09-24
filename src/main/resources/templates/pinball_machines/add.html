@@ -8,53 +8,77 @@
     <div th:replace="fragments :: navbar-main-div"></div>
     <div th:replace="fragments :: headline"></div>
 
-    <form>
+    <form method ="post" action="/pinball_machines/add" th:object="${machine}">
         <fieldset>
             <legend>Add a Machine</legend>
-            </hr>
-            <div class="form-group">
-                <label class="col-form-label mt-4"  >Search:</label>
-                <input type="text" class="form-control" placeholder=""
-                       id="pinballMachine">
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                    Title
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                    Manufacturer
-                </label>
-            </div>
-            <div class="form-check-label">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
-                    Year Released
-                </label>
-                <button type="submit" class="btn btn-primary btn-lg" >Search Database</button><br>
+            <hr>
 
+            <!-- Machine name input -->
+                <div class="form-group">
+                    <label class="col-form-label mt-4" for="inputDefault">Machine Name: </label>
+                    <input type="text" name="machineName"
+                           class="form-control"
+                           placeholder="Enter name"
+                           id="inputDefault1">
+                    <span class="error" th:text="${errors}"></span>
+
+                </div>
+            <!-- Manufacturer input -->
+                <div class="form-group">
+                    <label for="exampleSelect1" class="form-label mt-4">Manufacturer:</label>
+                    <select class="form-select" name="manufacturerName" id="exampleSelect1">
+                        <option>Bally's</option>
+                        <option>William's</option>
+                        <option>Stern</option>
+                        <option>Gottlieb</option>
+                        <option>Jersey Jack</option>
+                        <option>Spooky</option>
+                    </select>
+<!--                    <span class="error" th:errors="{manufacturer}"></span>-->
+
+                </div>
+            <!-- Year released input -->
+<!--                <div class="form-group">-->
+<!--                    <label class="col-form-label mt-4" for="inputDefault">Year Released: </label>-->
+<!--                    <input type="text" name="yearReleased" class="form-control"-->
+<!--                           placeholder="Enter year"-->
+<!--                           id="inputDefault2">-->
+<!--                    <span class="error" th:text="${yearReleased}"></span>-->
+
+<!--                </div>-->
+            <!-- High Score input -->
+                <div class="form-group">
+                    <label class="col-form-label mt-4" for="inputDefault">High Score: </label>
+                    <input type="text" name="highScore" class="form-control"
+                           placeholder="Enter score"
+                           id="inputDefault">
+                    <span class="error" th:text="${errors}"></span>
+
+                </div>
+            <br>
+
+            <!-- Create Machine button -->
+            <div class="sign-in-button">
+                <button type="submit" class="btn btn-primary btn-lg" >Add Machine</button><br>
             </div>
         </fieldset>
     </form>
 
-    <table>
-        <tr >
-            <td>
-                <p>
-                    Machine Name:
-                </p>
-                <p>
-                    Manufacturer:
-                </p>
-                <p>
-                    Year Released:
-                </p>
-            </td>
-        </tr>
-    </table>
+<!--    <table>-->
+<!--        <tr >-->
+<!--            <td>-->
+<!--                <p>-->
+<!--                    Machine Name:-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    Manufacturer:-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    Year Released:-->
+<!--                </p>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
 </body>
 
 </html>

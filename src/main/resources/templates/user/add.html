@@ -19,9 +19,9 @@
                     <input type="email" class="form-control"
                            th:field="*{userEmail}" id="exampleInputEmail1"
                            aria-describedby="emailHelp" placeholder="Enter email" />
-                    <span class="error" th:errors="*{userEmail}"></span>
                     <small id="emailHelp" class="email-privacy">We will never share your
-                        email</small>
+                        email</small><br>
+                    <span class="error" th:errors="*{userEmail}"></span>
                 </div>
 
                 <!-- Password Inputs -->
@@ -37,7 +37,7 @@
                     <label for="exampleInputPassword1" class="form-label mt-4">Verify
                         Password</label>
                     <input th:type="password" class="form-control" name="verifyPassword"
-                           th:field="*{verifyPassword}" id="verifyInputPassword2"
+                           th:text="${verifyPassword}" id="verifyInputPassword2"
                            placeholder="Re-type Password"><br>
                     <span class="error" th:text="${errors}"></span>
                 </div>

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 
-
 @Controller
 @RequestMapping("user")
 public class CreateUserController {
@@ -28,17 +27,21 @@ public class CreateUserController {
     public String processAddEmployerForm(Model model,
                                          @RequestParam String verifyPassword,
                                          @ModelAttribute @Valid User user,
-                                         Errors errors ) {
+                                         Errors errors) {
 
-        if (errors.hasErrors()) {
+        if (errors.hasErrors() || verifyPassword.isBlank()) {
+            model.addAttribute("errors","Please retype password to verify");
+            return "user/add";
+        } else if (userRepository.findByUserEmail(user.getUserEmail()) != null) {
+            model.addAttribute("errors", "Email already used!!");
             return "user/add";
         } else if (!verifyPassword.equals(user.getUserPassword())) {
             model.addAttribute("errors", "Passwords must match!!");
             return "user/add";
         } else {
             userRepository.save(user);
-            return "user/user-home";
         }
+        return "user/user-home";
 
-    }}
-
+    }
+}

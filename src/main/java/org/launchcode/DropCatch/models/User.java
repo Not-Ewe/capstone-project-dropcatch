@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,19 +26,17 @@ public class User {
     @Size(min=6, max=16, message = "Password must be between 6-16 characters")
     private String userPassword;
 
-    @NotBlank(message= "Please re-type password")
-    @Size(min=6, max=16, message = "Password must be between 6-16 characters")
-    private String verifyPassword;
 
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     // Constructors
 
-    public User(int id, String userEmail, String userPassword, String verifyPassword) {
+    public User(int id, String userEmail, String userPassword) {
         this.id = id;
         this.userEmail = userEmail;
-        this.userPassword = userPassword;
-        this.verifyPassword = verifyPassword;
+        this.userPassword = encoder.encode(userPassword);
     }
+
     // Will be needed for abstract entity
     public User() {};
 
@@ -63,9 +60,11 @@ public class User {
 
     public void setUserPassword(String userPassword) { this.userPassword = userPassword; }
 
-    public String getVerifyPassword() { return verifyPassword; }
 
-    public void setVerifyPassword(String verifyPassword) { this.verifyPassword = verifyPassword; }
+    // Check if given password matches stored password
+    public boolean isMatchingPassword(String password) {
+        return encoder.matches(password, userPassword);
+    }
 
     // toString
     @Override
