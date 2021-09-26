@@ -34,25 +34,25 @@
                         <option>Jersey Jack</option>
                         <option>Spooky</option>
                     </select>
-<!--                    <span class="error" th:errors="{manufacturer}"></span>-->
-
                 </div>
             <!-- Year released input -->
-<!--                <div class="form-group">-->
-<!--                    <label class="col-form-label mt-4" for="inputDefault">Year Released: </label>-->
-<!--                    <input type="text" name="yearReleased" class="form-control"-->
-<!--                           placeholder="Enter year"-->
-<!--                           id="inputDefault2">-->
-<!--                    <span class="error" th:text="${yearReleased}"></span>-->
+                <div class="form-group">
+                    <label class="col-form-label mt-4" for="inputDefault">Location (Optional):
+                    </label>
+                    <input type="text" name="machineLocation" class="form-control"
+                           placeholder="Enter location"
+                           id="inputDefault2">
+                    <span class="error" th:text="${locationErrors}"></span>
 
-<!--                </div>-->
+                </div>
             <!-- High Score input -->
                 <div class="form-group">
                     <label class="col-form-label mt-4" for="inputDefault">High Score: </label>
                     <input type="text" name="highScore" class="form-control"
                            placeholder="Enter score"
                            id="inputDefault">
-                    <span class="error" th:text="${errors}"></span>
+<!--                    <span class="error" th:text="${errors}"></span>-->
+                    <span class="error" th:text="${scoreErrors}"></span>
 
                 </div>
             <br>
@@ -63,22 +63,6 @@
             </div>
         </fieldset>
     </form>
-
-<!--    <table>-->
-<!--        <tr >-->
-<!--            <td>-->
-<!--                <p>-->
-<!--                    Machine Name:-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    Manufacturer:-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    Year Released:-->
-<!--                </p>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--    </table>-->
 </body>
 
 </html>

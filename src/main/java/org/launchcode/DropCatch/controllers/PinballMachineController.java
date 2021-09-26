@@ -23,7 +23,6 @@ public class PinballMachineController {
         return "pinball_machines/add";
     }
 
-
     @PostMapping("add")
     public String addPinballMachine(Model model,
                                     @RequestParam String machineName,
@@ -31,18 +30,31 @@ public class PinballMachineController {
                                     @ModelAttribute @Valid PinballMachines pinballMachines,
                                     Errors errors){
 
-
-        if (machineName.isBlank()) {
-            model.addAttribute("errors", "You gotta put SOMETHING in here...");
+        // Check if fields are blank
+        if (errors.hasErrors() || machineName.isBlank() || highScore.isBlank()) {
+            model.addAttribute("errors", "You gotta name the game");
+            model.addAttribute("scoreErrors", "And ya gotta have a score...");
             return "pinball_machines/add";
-        } else if (highScore.isBlank() || highScore.startsWith("-")) {
-            model.addAttribute("errors","You at least scored 0...");
+        }
+
+        // Check if highScore is an int
+        try {
+            Integer.parseInt(highScore);
+        } catch (NumberFormatException e) {
+            model.addAttribute("scoreErrors", "Score must be a number");
+            return "pinball_machines/add";
+        }
+
+        // Convert highScore to int, check if >0, save to repository
+        int highScoreToInt = Integer.valueOf(highScore);
+        if (highScoreToInt < 0) {
+            model.addAttribute("scoreErrors", "Can't have a negative score");
             return "pinball_machines/add";
         } else {
             pinballMachineRepository.save(pinballMachines);
         }
-        return "index";
 
+        return "index";
     }
 
 }

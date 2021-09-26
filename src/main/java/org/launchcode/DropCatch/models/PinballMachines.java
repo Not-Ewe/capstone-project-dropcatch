@@ -20,7 +20,8 @@ public class PinballMachines {
     private String machineName;
 
     private String manufacturerName;
-//    private int yearReleased;
+
+    private String machineLocation;
 
     @NotNull(message= "You gotta save a score")
     @Range(min= 0)
@@ -28,12 +29,11 @@ public class PinballMachines {
 
     // Constructors
     public PinballMachines(int id, String machineName, String manufacturerName,
-//                           int yearReleased,
-                           Integer highScore) {
+                         String machineLocation, Integer highScore) {
         this.id = id;
         this.machineName = machineName;
         this.manufacturerName = manufacturerName;
-//        this.yearReleased = yearReleased;
+        this.machineLocation = machineLocation;
         this.highScore = highScore;
     }
     // For abstract entity
@@ -54,9 +54,9 @@ public class PinballMachines {
 
     public void setManufacturerName(String manufacturerName) { this.manufacturerName = manufacturerName; }
 
-//    public int getYearReleased() { return yearReleased; }
-//
-//    public void setYearReleased(int yearReleased) { this.yearReleased = yearReleased; }
+    public String getMachineLocation() { return machineLocation; }
+
+    public void setMachineLocation(String machineLocation) { this.machineLocation = machineLocation; }
 
     public Integer getHighScore() { return highScore; }
 
