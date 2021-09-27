@@ -31,17 +31,21 @@ public class SearchController {
 
         if (searchType.equals("all") || searchTerm.equals("") || searchTerm.toLowerCase(Locale.ROOT).equals("all")){
             machines = pinballMachineRepository.findAll();
+            model.addAttribute("machines", machines);
             return "search/results";
         }
         if (searchType.equals("machineName")) {
             machines = pinballMachineRepository.findByMachineNameLike("%" +
                             searchTerm.toLowerCase(Locale.ROOT) + "%");
-            return "search/search";
+            model.addAttribute("machines", machines);
+            return "search/results";
         }
         if (searchType.equals("machineLocation")) {
             machines = pinballMachineRepository.findByMachineLocationLike("%" +
                     searchTerm.toLowerCase(Locale.ROOT) + "%");
-            return "fragments";
+            model.addAttribute("machines", machines);
+
+            return "search/results";
         }
         return "index";
     }

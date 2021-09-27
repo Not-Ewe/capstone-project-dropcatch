@@ -26,6 +26,7 @@ public class PinballMachineController {
     @PostMapping("add")
     public String addPinballMachine(Model model,
                                     @RequestParam String machineName,
+                                    @RequestParam String machineLocation,
                                     @RequestParam String highScore,
                                     @ModelAttribute @Valid PinballMachines pinballMachines,
                                     Errors errors){
@@ -51,10 +52,11 @@ public class PinballMachineController {
             model.addAttribute("scoreErrors", "Can't have a negative score");
             return "pinball_machines/add";
         } else {
+            model.addAttribute("machineAdded", "Machine Successfully Added!!");
             pinballMachineRepository.save(pinballMachines);
         }
 
-        return "index";
+        return "pinball_machines/add";
     }
 
 }

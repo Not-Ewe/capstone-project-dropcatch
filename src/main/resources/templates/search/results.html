@@ -11,10 +11,19 @@
     <form>
         <table>
             <tr th:each="machine : ${machines}">
-                <p>Machine Name:
-                <a th:text = "${machine.machineName}"></a>
-                </p>
+                <td class="results" >
+                    <div>
+                        <p>Machine Name:
+                        <a th:text = "${machine.machineName}"></a>
+                        </p>
+                    </div>
+                    <div>
+                        <p>Location:
+                        <a th:text = "${machine.machineLocation}"></a>
+                        </p>
+                    </div>
 
+                </td>
             </tr>
         </table>
     </form>
