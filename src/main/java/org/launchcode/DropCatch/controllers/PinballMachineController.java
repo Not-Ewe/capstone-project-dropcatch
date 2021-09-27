@@ -54,7 +54,7 @@ public class PinballMachineController {
             pinballMachineRepository.save(pinballMachines);
         }
 
-        return "user_home";
+        return "index";
     }
 
 }

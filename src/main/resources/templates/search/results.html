@@ -8,6 +8,15 @@
 <div th:replace="fragments :: navbar-main-div"></div>
 <div th:replace="fragments :: headline"></div>
 
-    <h1>Search successful!</h1>
+    <form>
+        <table>
+            <tr th:each="machine : ${machines}">
+                <p>Machine Name:
+                <a th:text = "${machine.machineName}"></a>
+                </p>
+
+            </tr>
+        </table>
+    </form>
 </body>
 </html>

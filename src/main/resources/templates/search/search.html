@@ -8,7 +8,7 @@
 <div th:replace="fragments :: navbar-main-div"></div>
 <div th:replace="fragments :: headline"></div>
 
-    <form method= "post" action="search/search">
+    <form method= "post" action="/search/search" th:object="${search}">
         <fieldset>
             <legend>Search Machines</legend>
 
@@ -19,23 +19,23 @@
 
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="searchAll"
-                               id="inputDefault1" value="option1" checked="">
+                        <input type="radio" class="form-check-input" name="searchType"
+                               id="all" value="all" checked="">
                         All
                     </label>
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="searchMachines"
-                               id="inputDefault2"
-                               value="option2" >
+                        <input type="radio" class="form-check-input" name="searchType"
+                               id="machineName"
+                               value="machineName" >
                         Machine Name
                     </label>
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="searchLocations"
-                               id="inputDefault3" value="option3" >
+                        <input type="radio" class="form-check-input" name="searchType"
+                               id="machineLocation" value="machineLocation" >
                         Location
                     </label>
                 </div>
