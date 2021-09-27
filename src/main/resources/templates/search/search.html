@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head th:replace="fragments :: head">
+</head>
+
+<body>
+<div th:replace="fragments :: navbar-main-div"></div>
+<div th:replace="fragments :: headline"></div>
+
+    <form method= "post" action="search/search">
+        <fieldset>
+            <legend>Search Machines</legend>
+
+            <div class="form-group">
+                <label class="col-form-label mt-4" for="inputDefault">Keyword: </label>
+                <input type="text" name="searchTerm" class="form-control" placeholder="Search term"
+                       id="inputDefault">
+
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="searchAll"
+                               id="inputDefault1" value="option1" checked="">
+                        All
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="searchMachines"
+                               id="inputDefault2"
+                               value="option2" >
+                        Machine Name
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="searchLocations"
+                               id="inputDefault3" value="option3" >
+                        Location
+                    </label>
+                </div>
+            </div>
+
+            <div class="sign-in-button">
+                <button type="submit" class="btn btn-primary btn-lg" >Search</button><br>
+            </div>
+
+        </fieldset>
+    </form>
+
+</body>
+</html>

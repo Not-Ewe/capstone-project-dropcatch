@@ -31,7 +31,7 @@ public class PinballMachineController {
                                     Errors errors){
 
         // Check if fields are blank
-        if (errors.hasErrors() || machineName.isBlank() || highScore.isBlank()) {
+        if (machineName.isBlank() || highScore.isBlank()) {
             model.addAttribute("errors", "You gotta name the game");
             model.addAttribute("scoreErrors", "And ya gotta have a score...");
             return "pinball_machines/add";
@@ -54,7 +54,7 @@ public class PinballMachineController {
             pinballMachineRepository.save(pinballMachines);
         }
 
-        return "index";
+        return "user_home";
     }
 
 }
