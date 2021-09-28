@@ -9,23 +9,29 @@
 <div th:replace="fragments :: headline"></div>
 
     <form>
+        <span class="error" th:text="${errors}"></span>
+
         <table>
+
             <tr th:each="machine : ${machines}">
                 <td class="results" >
-                    <div>
+
                         <p>Machine Name:
                         <a th:text = "${machine.machineName}"></a>
                         </p>
-                    </div>
-                    <div>
+
                         <p>Location:
                         <a th:text = "${machine.machineLocation}"></a>
                         </p>
-                    </div>
 
                 </td>
             </tr>
         </table>
+        <div class="sign-in-button">
+            <button type="submit" class="btn btn-primary btn-lg" href="/search">New
+                Search</button><br>
+        </div>
+
     </form>
 </body>
 </html>
