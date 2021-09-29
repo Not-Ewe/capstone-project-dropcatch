@@ -48,6 +48,7 @@ public class SearchController {
             model.addAttribute("machines", machines);
             return "search/results";
         }
+
         // Search by Machine Location
         if (searchType.equals("machineLocation")) {
             machines = pinballMachineRepository.findByMachineLocationLike("%" +
@@ -58,8 +59,8 @@ public class SearchController {
             }
             model.addAttribute("machines", machines);
 
-            return "search/results";
+//            return "search/results";
         }
-        return "index";
+        return "search/results";
     }
 }

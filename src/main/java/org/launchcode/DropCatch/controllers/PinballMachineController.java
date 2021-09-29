@@ -26,7 +26,7 @@ public class PinballMachineController {
     @PostMapping("add")
     public String addPinballMachine(Model model,
                                     @RequestParam String machineName,
-                                    @RequestParam String machineLocation,
+                                    @RequestParam(required = false, defaultValue = "Unknown") String machineLocation,
                                     @RequestParam String highScore,
                                     @ModelAttribute @Valid PinballMachines pinballMachines,
                                     Errors errors){

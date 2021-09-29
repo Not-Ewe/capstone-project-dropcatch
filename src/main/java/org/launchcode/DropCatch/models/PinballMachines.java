@@ -1,7 +1,10 @@
 package org.launchcode.DropCatch.models;
 
+import net.bytebuddy.implementation.bind.annotation.Default;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.Range;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -56,7 +59,13 @@ public class PinballMachines {
 
     public String getMachineLocation() { return machineLocation; }
 
-    public void setMachineLocation(String machineLocation) { this.machineLocation = machineLocation; }
+    public void setMachineLocation(String machineLocation) {
+        if (machineLocation.isBlank() || machineLocation == "") {
+            this.machineLocation = "unknown";
+        } else {
+            this.machineLocation = machineLocation;
+        }
+    }
 
     public Integer getHighScore() { return highScore; }
 
