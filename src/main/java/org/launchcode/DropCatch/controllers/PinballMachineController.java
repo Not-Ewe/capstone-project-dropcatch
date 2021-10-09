@@ -1,6 +1,9 @@
 package org.launchcode.DropCatch.controllers;
 
 import org.launchcode.DropCatch.models.PinballMachines;
+import org.launchcode.DropCatch.models.User;
+import org.launchcode.DropCatch.models.data.HighScoreRepository;
+import org.launchcode.DropCatch.models.HighScores;
 import org.launchcode.DropCatch.models.data.PinballMachineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +20,13 @@ public class PinballMachineController {
     @Autowired
     private PinballMachineRepository pinballMachineRepository;
 
+    @Autowired
+    private HighScoreRepository highScoreRepository;
+
     @GetMapping("add")
     public String createPinballMachine(Model model) {
         model.addAttribute(new PinballMachines());
+        model.addAttribute(new HighScores());
         return "pinball_machines/add";
     }
 
@@ -29,6 +36,7 @@ public class PinballMachineController {
                                     @RequestParam(required = false, defaultValue = "Unknown") String machineLocation,
                                     @RequestParam String highScore,
                                     @ModelAttribute @Valid PinballMachines pinballMachines,
+                                    @ModelAttribute @Valid HighScores highScores,
                                     Errors errors){
 
         // Check if fields are blank
@@ -54,6 +62,10 @@ public class PinballMachineController {
         } else {
             model.addAttribute("machineAdded", "Machine Successfully Added!!");
             pinballMachineRepository.save(pinballMachines);
+            highScores.setHighScore(highScoreToInt);
+            highScores.setMachineId(pinballMachines.getId());
+//            highScores.setUserId(user.getId());
+            highScoreRepository.save(highScores);
         }
 
         return "pinball_machines/add";

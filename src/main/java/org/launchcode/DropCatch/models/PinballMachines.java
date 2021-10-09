@@ -1,16 +1,10 @@
 package org.launchcode.DropCatch.models;
 
-import net.bytebuddy.implementation.bind.annotation.Default;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.validator.constraints.Range;
-import org.springframework.boot.context.properties.bind.DefaultValue;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
 
 @Entity
 public class PinballMachines {
@@ -26,18 +20,20 @@ public class PinballMachines {
 
     private String machineLocation;
 
-    @NotNull(message= "You gotta save a score")
-    @Range(min= 0)
-    private Integer highScore;
+//    @NotNull(message= "You gotta save a score")
+//    @Range(min= 0)
+//    private Integer highScore;
 
     // Constructors
     public PinballMachines(int id, String machineName, String manufacturerName,
-                         String machineLocation, Integer highScore) {
+                         String machineLocation
+//            , Integer highScore
+    ) {
         this.id = id;
         this.machineName = machineName;
         this.manufacturerName = manufacturerName;
         this.machineLocation = machineLocation;
-        this.highScore = highScore;
+//        this.highScore = highScore;
     }
     // For abstract entity
     public PinballMachines() {};
@@ -67,9 +63,9 @@ public class PinballMachines {
         }
     }
 
-    public Integer getHighScore() { return highScore; }
-
-    public void setHighScore(Integer highScore) { this.highScore = highScore; }
+//    public Integer getHighScore() { return highScore; }
+//
+//    public void setHighScore(Integer highScore) { this.highScore = highScore; }
 
     // toString override method
     @Override

@@ -41,7 +41,7 @@ public class CreateUserController {
         } else {
             userRepository.save(user);
         }
-        return "user/user_home";
+        return "user/user_home" ;
 
     }
 }

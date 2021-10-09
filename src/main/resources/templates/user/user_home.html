@@ -7,9 +7,14 @@
 <div th:replace="fragments :: navbar-main-div"></div>
 <div th:replace="fragments :: headline"></div>
 
-<form>
+<form action="/pinball_machines/add">
     <legend th:text="${user.userEmail}"></legend>
-<!--    <fieldset>-->
+    <div class="sign-in-button">
+        <button type="submit" href="\pinball_machines/add"
+                class="btn btn-primary btn-lg"
+        >Let's Add A Machine!</button><br><br>
+
+        <!--    <fieldset>-->
         <table class="table table-hover">
             <thead>
             <tr class="table-primary">
@@ -25,6 +30,9 @@
             </tr>
 <!--    </fieldset>-->
         </table>
+    </div>
+
 </form>
+
 </body>
 </html>

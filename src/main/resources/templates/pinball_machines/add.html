@@ -8,7 +8,7 @@
     <div th:replace="fragments :: navbar-main-div"></div>
     <div th:replace="fragments :: headline"></div>
 
-    <form method ="post" action="/pinball_machines/add" th:object="${machine}">
+    <form method ="post" action="/pinball_machines/add" th:object="${machine}" >
         <fieldset>
             <legend>Add a Machine</legend>
             <hr>
@@ -52,7 +52,6 @@
                     <input type="text" name="highScore" class="form-control"
                            placeholder="Enter score"
                            id="inputDefault">
-<!--                    <span class="error" th:text="${errors}"></span>-->
                     <span class="error" th:text="${scoreErrors}"></span>
 
                 </div>
