@@ -35,6 +35,7 @@ public class PinballMachineController {
                                     @RequestParam String machineName,
                                     @RequestParam(required = false, defaultValue = "Unknown") String machineLocation,
                                     @RequestParam String highScore,
+                                    @ModelAttribute User user,
                                     @ModelAttribute @Valid PinballMachines pinballMachines,
                                     @ModelAttribute @Valid HighScores highScores,
                                     Errors errors){
@@ -64,7 +65,7 @@ public class PinballMachineController {
             pinballMachineRepository.save(pinballMachines);
             highScores.setHighScore(highScoreToInt);
             highScores.setMachineId(pinballMachines.getId());
-//            highScores.setUserId(user.getId());
+            highScores.setUserId(user.getId());
             highScoreRepository.save(highScores);
         }
 
