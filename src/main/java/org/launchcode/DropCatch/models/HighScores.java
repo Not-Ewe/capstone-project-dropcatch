@@ -45,7 +45,8 @@ public class HighScores {
         this.machineId= machineId;
     }
 
-    public void setUserId(int userId) {
+    public int setUserId(int userId) {
         this.userId = userId;
+        return userId;
     }
 }

@@ -10,6 +10,7 @@
 
     <form method ="post" action="/pinball_machines/add" th:object="${machine}" >
         <fieldset>
+            <input type="text" name="userId" th:value="${user?.id}"/>
             <legend>Add a Machine</legend>
             <hr>
             <span class="error" th:text="${machineAdded}"></span>
@@ -63,6 +64,22 @@
             </div>
         </fieldset>
     </form>
+    <br><br>
+    <table class="table table-hover">
+        <thead>
+        <tr class="table-primary">
+            <th scope="col">Your Machines</th>
+            <th scope="col">Location of Machine</th>
+            <th scope="col">High Scores</th>
+        </tr>
+        </thead>
+        <tr class="table-primary">
+            <td>Machine Names here</td>
+            <td>Machine Location here</td>
+            <td>High Scores here</td>
+        </tr>
+        <!--    </fieldset>-->
+    </table>
 </body>
 
 </html>
