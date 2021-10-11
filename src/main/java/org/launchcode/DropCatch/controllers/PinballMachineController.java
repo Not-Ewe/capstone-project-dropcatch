@@ -29,9 +29,9 @@ public class PinballMachineController {
     private HighScoreRepository highScoreRepository;
 
     @GetMapping("add")
-    public String createPinballMachine(Model model) {
+    public String createPinballMachine(Model model, @RequestParam int userId) {
 
-//        model.addAttribute("userId", userId);
+        model.addAttribute("userId", userId);
         model.addAttribute(new PinballMachines());
         model.addAttribute(new HighScores());
         return "pinball_machines/add";
@@ -83,6 +83,8 @@ public class PinballMachineController {
             highScores.setUserId(userId);
             highScoreRepository.save(highScores);
         }
+        Optional<User> currentUser = userRepository.findById(userId);
+//        userId= userRepository.findById(userId).get();
 
 
         return "pinball_machines/add";

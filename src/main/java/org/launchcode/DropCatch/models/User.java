@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.Objects;
+import java.util.Optional;
 
 @Entity
 public class User {
@@ -39,6 +40,10 @@ public class User {
 
     // Will be needed for abstract entity
     public User() {};
+
+    public User(Optional<User> currentUser) {
+
+    }
 
 
     // Getters and Setters
