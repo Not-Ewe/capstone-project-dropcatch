@@ -20,25 +20,17 @@ public class PinballMachines {
 
     private String machineLocation;
 
-//    @NotNull(message= "You gotta save a score")
-//    @Range(min= 0)
-//    private Integer highScore;
 
-    // Constructors
+        // Constructors
     public PinballMachines(int id, String machineName, String manufacturerName,
-                         String machineLocation
-//            , Integer highScore
-    ) {
+                         String machineLocation) {
         this.id = id;
         this.machineName = machineName;
         this.manufacturerName = manufacturerName;
         this.machineLocation = machineLocation;
-//        this.highScore = highScore;
     }
-    // For abstract entity
+        // For abstract entity
     public PinballMachines() {};
-
-
 
         //Getters and Setters
     public int getId() { return id; }
@@ -63,11 +55,7 @@ public class PinballMachines {
         }
     }
 
-//    public Integer getHighScore() { return highScore; }
-//
-//    public void setHighScore(Integer highScore) { this.highScore = highScore; }
-
-    // toString override method
+        // toString override method
     @Override
     public String toString() {
         return "PinballMachines{" +
