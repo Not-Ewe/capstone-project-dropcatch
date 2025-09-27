@@ -1,9 +1,11 @@
 package org.launchcode.DropCatch.controllers;
 
+import org.launchcode.DropCatch.models.Location;
 import org.launchcode.DropCatch.models.PinballMachines;
 import org.launchcode.DropCatch.models.User;
 import org.launchcode.DropCatch.models.data.HighScoreRepository;
 import org.launchcode.DropCatch.models.HighScores;
+import org.launchcode.DropCatch.models.data.LocationRepository;
 import org.launchcode.DropCatch.models.data.PinballMachineRepository;
 import org.launchcode.DropCatch.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class PinballMachineController {
     @Autowired
     private HighScoreRepository highScoreRepository;
 
+    @Autowired
+    private LocationRepository locationRepository;
+
     @GetMapping("add")
     public String createPinballMachine(Model model, @RequestParam int userId) {
 
@@ -51,6 +56,7 @@ public class PinballMachineController {
                                     @ModelAttribute User user,
                                     @ModelAttribute @Valid PinballMachines pinballMachines,
                                     @ModelAttribute @Valid HighScores highScores,
+                                    @ModelAttribute Location location,
                                     Errors errors){
 
 

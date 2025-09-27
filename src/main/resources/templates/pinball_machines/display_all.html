@@ -10,5 +10,25 @@
 
 <h1>Display all page</h1>
 
+<form>
+    <span class="error" th:text="${errors}"></span>
+    <table>
+
+        <tr th:each="machine : ${machines}">
+            <td class="results" >
+                <p>Machine Name:
+                    <a th:text = "${machine.machineName}"></a>
+                </p>
+
+                <p>Location:
+                    <a th:text = "${machine.machineLocation}"></a>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <div class="sign-in-button">
+        <button type="submit" class="btn btn-primary btn-lg" href="/search">New
+            Search</button><br>
+    </div>
 </body>
 </html>

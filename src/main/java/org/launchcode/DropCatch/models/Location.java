@@ -12,24 +12,50 @@ public class Location {
     @GeneratedValue
     private int id;
 
+    private int machineId;
+
+    private int userId;
+
     private String locationName;
 
     private String locationAddress;
 
-    public Location(int id, String locationName, String locationAddress) {
+        // Constructors
+    public Location(int id, int machineId, int userId, String locationName,
+                    String locationAddress) {
         this.id = id;
+        this.machineId = machineId;
+        this.userId = userId;
         this.locationName = locationName;
         this.locationAddress = locationAddress;
     }
 
     public Location() {};
 
+
+        // Getters and Setters
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getMachineId() {
+        return machineId;
+    }
+
+    public void setMachineId(int machineId) {
+        this.machineId = machineId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getLocationName() {
@@ -45,6 +71,10 @@ public class Location {
     }
 
     public void setLocationAddress(String locationAddress) {
-        this.locationAddress = locationAddress;
+        if (locationAddress.isBlank() || locationAddress == "") {
+            this.locationAddress = "unknown";
+        } else {
+            this.locationAddress = locationAddress;
+        }
     }
 }

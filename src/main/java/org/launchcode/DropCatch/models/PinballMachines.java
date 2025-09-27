@@ -22,8 +22,7 @@ public class PinballMachines {
 
 
         // Constructors
-    public PinballMachines(int id, String machineName, String manufacturerName,
-                         String machineLocation) {
+    public PinballMachines(int id, String machineName, String manufacturerName, String machineLocation) {
         this.id = id;
         this.machineName = machineName;
         this.manufacturerName = manufacturerName;
